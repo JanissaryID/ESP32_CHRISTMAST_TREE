@@ -1,14 +1,13 @@
 int XY(int x, int y) {
-  int reversedX = 15 - x;  // Reverse X-coordinate
-  int reversedY = 15 - y;  // Reverse Y-coordinate
+  if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) return -1;
 
   // Adjust for serpentine wiring
-  if (reversedY % 2 == 0) {
+  if (y % 2 == 0) {
     // Even rows go left-to-right
-    return (reversedY * 16) + reversedX;
+    return (y * WIDTH) + x;
   } else {
     // Odd rows go right-to-left
-    return (reversedY * 16) + (15 - reversedX);
+    return (y * WIDTH) + (WIDTH - 1 - x);
   }
 }
 
